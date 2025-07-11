@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect
-# from models import Citata
+from .models import Citata
 from . import forms
 
 def work_with_citates(request):
     return render(request, 'work_with_citate.html')
+
+def all_citates(request):
+    citates = Citata.objects.all().order_by('date')
+    return render(request, 'all_citates.html', {'citates':citates})
+
 
 def add_citate(request):
     if request.method == 'POST':
