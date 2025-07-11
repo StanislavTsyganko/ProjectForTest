@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Добавление цитаты
+{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Новая цитата</h1>
+        <form class="form-for-new-text" action="{% url 'citate:add' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <button class="form-submit">Добавить</button>
+        </form>
+    </section>
+{% endblock %}
