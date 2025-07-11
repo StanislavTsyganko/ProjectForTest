@@ -1,10 +1,9 @@
 from django.shortcuts import render
+# from models import Citata
 
 def main(request):
     return render(request, 'main.html')
 
-def add(request):
-    return render(request, 'add.html')
-
 def top(request):
     return render(request, 'top.html')
+
