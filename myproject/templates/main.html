@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    {% citate.views+=1 %}
+{% if citate.character %}
     {% if citate.character %}
     <h2>
         {{ citate.character }}: 
@@ -23,7 +23,19 @@
     <p>
         Рейтинг на сайте {{ citate.raiting }}
     </p>
-    <button onclick="citate.raiting+=1">Like</button>
-    <button onclick="citate.raiting-=1">Dislike</button>
+    <button class="vote-button" data-citate-id="{{ citate.pk }}" data-action="Like">Like ❤</button>
+    <button class="vote-button" data-citate-id="{{ citate.pk }}" data-action="Dislike">Dislike 💔</button>
     
+{% else %}
+    <p>
+        "Цитат пока нет(("
+    </p>
+
+
+
+    <script>
+
+
+
+    </script>
 {% endblock %}
