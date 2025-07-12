@@ -6,3 +6,5 @@ class CreateCitate(forms.ModelForm):
         model = models.Citata
         fields = ['content', 'character', 'weight']
         labels = {"content":"Цитата", "character": "Персонаж или автор", "weight":"Вес"}
+
+# class EditCitate(forms.ModelForm):

@@ -1,6 +1,7 @@
 import random
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from citate.models import Citata
+from django.views.decorators.http import require_POST
 
 def find_random_citate(citates):
     score = 0
@@ -17,6 +18,21 @@ def main(request):
     citates = Citata.objects.all()
     citate = find_random_citate(citates)
     return render(request, 'main.html', {'citate':citate})
+
+@require_POST
+def update_raiting(request):
+    citate_id = request.POST.get('citate_id')
+    action = request.POST.get('action')
+    try:
+        citate = get_object_or_404(Citata, pk=citate_id)
+        if action=='Like':
+            citate.raiting+=1
+        elif action=='Dislike':
+            citate.raiting-=1
+        citate.save()
+    except Exception as e:
+        return str(e)
+
 
 def top(request):
     return render(request, 'top.html')

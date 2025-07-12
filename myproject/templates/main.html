@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+    {% citate.views+=1 %}
     {% if citate.character %}
     <h2>
         {{ citate.character }}: 
@@ -19,7 +20,10 @@
     <p>
         Загружена {{ citate.date|date:"d.m.Y" }}
     </p>
-    <p>Like</p>
-    <p>Dislike</p>
+    <p>
+        Рейтинг на сайте {{ citate.raiting }}
+    </p>
+    <button onclick="citate.raiting+=1">Like</button>
+    <button onclick="citate.raiting-=1">Dislike</button>
     
 {% endblock %}
