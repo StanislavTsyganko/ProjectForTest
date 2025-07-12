@@ -7,16 +7,19 @@ def find_random_citate(citates):
     score = 0
     for citate in citates:
         score+=citate.weight
-    index = random.randint(0,score)
-    for citate in citates:
-        if score-citate.weight>0:
-            score-=citate
+    index = random.randint(0, score)
+    for index in citates:
+        if index-citate.weight>0:
+            index-=citate
         else:
             return citate
 
 def main(request):
     citates = Citata.objects.all()
     citate = find_random_citate(citates)
+    if citate:
+        citate.views+=1
+        citate.save(update_fields=['views'])
     return render(request, 'main.html', {'citate':citate})
 
 @require_POST
