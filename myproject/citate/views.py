@@ -23,6 +23,6 @@ def add_citate(request):
     return render(request, 'add.html', {'form': form})
 
 def top_citate(request):
-    citates = Citata.objects.all().order_by('-views')
+    citates = Citata.objects.all().order_by('-raiting')
     return render(request, 'top.html', {'citates':citates})
 
