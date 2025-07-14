@@ -20,7 +20,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for citate in citates %}
+                {% for citate in citates_by_raiting %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
                     <td>{{ citate.character|default:"-" }}</td>
@@ -28,6 +28,36 @@
                     <td>{{ citate.source }}</td>
                     <td>{{ citate.raiting }}</td>
                     <td>{{ citate.views }}</td>
+                    <td>{{ citate.date|date:"d.m.Y" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h1>А также 10 самых просматриваемых</h1>
+        <table border=1 class="top-citates-table">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Персонаж</th>
+                    <th>Цитата</th>
+                    <th>Источник</th>
+                    <th>Просмотры</th>
+                    <th>Рейтинг</th>
+                    <th>Дата</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for citate in citates_by_views %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ citate.character|default:"-" }}</td>
+                    <td>{{ citate.content }}</td>
+                    <td>{{ citate.source }}</td>
+                    <td>{{ citate.views }}</td>
+                    <td>{{ citate.raiting }}</td>
                     <td>{{ citate.date|date:"d.m.Y" }}</td>
                 </tr>
                 {% endfor %}
