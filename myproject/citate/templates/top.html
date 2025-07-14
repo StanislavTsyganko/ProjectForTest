@@ -13,6 +13,8 @@
                     <th>№</th>
                     <th>Персонаж</th>
                     <th>Цитата</th>
+                    <th>Источник</th>
+                    <th>Рейтинг</th>
                     <th>Просмотры</th>
                     <th>Дата</th>
                 </tr>
@@ -23,6 +25,8 @@
                     <td>{{ forloop.counter }}</td>
                     <td>{{ citate.character|default:"-" }}</td>
                     <td>{{ citate.content }}</td>
+                    <td>{{ citate.source }}</td>
+                    <td>{{ citate.raiting }}</td>
                     <td>{{ citate.views }}</td>
                     <td>{{ citate.date|date:"d.m.Y" }}</td>
                 </tr>
