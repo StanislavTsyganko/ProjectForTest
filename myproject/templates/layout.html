@@ -17,6 +17,9 @@
         <a href="{% url 'citate:add' %}">Добавление цитат➕</a> | 
         <a href="{% url 'citate:top' %}">Топ 10 цитат💯</a> | 
         <a href="{% url 'citate:all' %}">Посмотреть цитат</a>
+        {% if request.COOKIES.quote_user %}
+        | <a href="{% url 'citate:my_citates' %}">Мои цитаты</a>
+        {% endif %}
     </nav>
     <main>
     {% block body %}

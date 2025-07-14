@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Здесь цитаты от {{ citate.user_name }}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Вот цитаты</h1>
+        
+        {% if citates %}
+        {% for citate in citates %}
+        <article class="citate_block">
+            {% if citate.character %}
+            <h2>
+                {{ citate.character }}: 
+            </h2>
+            {% endif %}
+            <h1> 
+                "{{ citate.content }}" 
+            </h1>            
+            <p>
+                {{ citate.views }} 👁‍🗨
+            </p>
+            <p>
+                Загружена {{ citate.date|date:"d.m.Y" }}
+            </p>
+            <p>
+                А вот такой вес задан: {{ citate.weight }}
+            </p>
+            <hr>
+        </article>
+        {% endfor %}
+        {% else %}
+            <p>Вы ещё не добавили ни одной цитаты.</p>
+        {% endif %}
+    </section>
+{% endblock %}

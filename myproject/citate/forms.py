@@ -3,10 +3,12 @@ from . import models
 from django.core.exceptions import ValidationError
 
 class CreateCitate(forms.ModelForm):
+    user = forms.CharField(widget=forms.HiddenInput(), required=False)
+
     class Meta:
         model = models.Citata
-        fields = ['content', 'source', 'character', 'weight']
-        labels = {"content":"Цитата", "source":"Источник", "character": "Персонаж или автор", "weight":"Вес"}
+        fields = ['content', 'source', 'character', 'weight', 'user_name']
+        labels = {"content":"Цитата", "source":"Источник", "character": "Персонаж или автор", "weight":"Вес", "user_name":"Имя пользователя"}
     
     def clean(self):
         cleaned_data = super().clean()

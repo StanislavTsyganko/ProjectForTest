@@ -9,6 +9,7 @@ class Citata(models.Model):
     weight = models.IntegerField(validators=[MaxValueValidator(10), MinValueValidator(1)], default=1)
     views = models.IntegerField(default=0)
     raiting = models.IntegerField(default=0)
+    user_name = models.CharField(max_length=75, default='Анонимно')
 
     def __str__(self):
         return self.content
