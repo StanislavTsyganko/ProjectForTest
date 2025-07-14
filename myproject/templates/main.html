@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+{% csrf_token %}
 {% if citate.character %}
     {% if citate.character %}
     <h2>
@@ -40,13 +41,19 @@
     <script>
         document.querySelectorAll('.vote-button').forEach(button => {
             button.addEventListener('click', function(){
-                const citateID =  this.dataset.citateID;
+                const citateID =  this.dataset.citateId;
                 const action  = this.dataset.action;
+
+                if (!citateID || !action) {
+                    alert('Ошибка: отсутствуют необходимые данные');
+                    return;
+                }
 
                 fetch("{% url 'update_rating' %}", {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-CSRFToken': '{{ csrf_token }}'
                     },
                     body: new URLSearchParams({
                         'citate_id' : citateID,
