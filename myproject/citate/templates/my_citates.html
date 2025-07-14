@@ -1,12 +1,12 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-    Здесь цитаты от {{ citate.user_name }}
+    Здесь цитаты от {{ username }}
 {% endblock %}
 
 {% block body %}
     <section>
-        <h1>Вот цитаты</h1>
+        <h1>Вот цитаты {{ username }}</h1>
         
         {% if citates %}
         {% for citate in citates %}

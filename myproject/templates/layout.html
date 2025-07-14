@@ -19,6 +19,7 @@
         <a href="{% url 'citate:all' %}">Посмотреть цитат</a>
         {% if request.COOKIES.quote_user %}
         | <a href="{% url 'citate:my_citates' %}">Мои цитаты</a>
+        | <a href="{% url 'citate:logout' %}">Разлогиниться</a>
         {% endif %}
     </nav>
     <main>

@@ -22,6 +22,9 @@
             </p>
             <p>
                 Загружена {{ citate.date|date:"d.m.Y" }}
+            {% if citate.user_name and citate.user_name != 'Анонимно' %}
+                 пользователем {{ citate.user_name }}
+            {% endif %}
             </p>
             <p>
                 А вот такой вес задан: {{ citate.weight }}

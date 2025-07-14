@@ -8,5 +8,6 @@ urlpatterns = [
     path('add', views.add_citate, name="add"),
     path('top', views.top_citate, name="top"),
     path('all', views.all_citates, name="all"),
-    path('my', views.my_citates, name="my"),
+    path('my_citates', views.my_citates, name="my_citates"),
+    path('logout', views.logout_view, name="logout"),
 ]
