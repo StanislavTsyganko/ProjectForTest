@@ -50,18 +50,17 @@
                 }
 
                 fetch("{% url 'update_rating' %}", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'X-CSRFToken': '{{ csrf_token }}'
-                    },
-                    body: new URLSearchParams({
-                        'citate_id' : citateID,
-                        'action': action                        
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                            'X-CSRFToken': '{{ csrf_token }}'
+                        },
+                        body: new URLSearchParams({
+                            'citate_id' : citateID,
+                            'action': action                        
+                        })
                     })
-                })
                     .then(response => {
-                        console.log('Raw response:', response);
                         return response.json();
                     })
                     .then(data => {

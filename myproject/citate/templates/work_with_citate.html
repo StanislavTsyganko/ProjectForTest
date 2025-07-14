@@ -6,6 +6,6 @@
 
 {% block body %}
     <h1>Здесь можно:</h1>
-    <p><a href="citate/add">добавить</a> цитату</p>
-    <p>или <a href="citate/top">посмотреть</a> топ цитат</p>
+    <p><a href="{% url 'citate:add' %}">добавить</a> цитату</p>
+    <p>или <a href="{% url 'citate:top' %}">посмотреть</a> топ цитат</p>
 {% endblock %}

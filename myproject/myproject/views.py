@@ -41,4 +41,3 @@ def update_rating(request):
 
 def top(request):
     return render(request, 'top.html')
-
