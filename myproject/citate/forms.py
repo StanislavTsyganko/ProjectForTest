@@ -8,7 +8,7 @@ class CreateCitate(forms.ModelForm):
         fields = ['content', 'source', 'character', 'weight']
         labels = {"content":"Цитата", "source":"Источник", "character": "Персонаж или автор", "weight":"Вес"}
     
-    def clean():
+    def clean(self):
         cleaned_data = super().clean()
         source = cleaned_data.get('source')
 

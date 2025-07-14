@@ -11,7 +11,7 @@ def find_random_citate(citates):
     index = random.randint(0, score)
     for citate in citates:
         if index-citate.weight>0:
-            index-=citate
+            index-=citate.weight
         else:
             return citate
 
@@ -35,6 +35,10 @@ def update_rating(request):
         elif action=='Dislike':
             citate.raiting=citate.raiting-1
         citate.save()
+        return JsonResponse({
+            'status': 'success',
+            'new_rating': citate.raiting,
+        })
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
 
