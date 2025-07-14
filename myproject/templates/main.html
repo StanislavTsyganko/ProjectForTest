@@ -27,7 +27,7 @@
         <button class="vote-button" data-citate-id="{{ citate.pk }}" data-action="Like">Like ❤</button>
         <button class="vote-button" data-citate-id="{{ citate.pk }}" data-action="Dislike">Dislike 💔</button>
     </article>
-    <button class="update-button">Еще цитатку?⏩</button>
+    <button id="update-button">Еще цитатку?⏩</button>
 
     
 {% else %}
@@ -35,7 +35,7 @@
         "Цитат пока нет(("
     </p>
 
-
+{% endif %}
 
     <script>
         document.querySelectorAll('.vote-button').forEach(button => {
@@ -43,7 +43,7 @@
                 const citateID =  this.dataset.citateID;
                 const action  = this.dataset.action;
 
-                fetch('citate/update'), {
+                fetch("{% url 'update_rating' %}", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
@@ -52,10 +52,14 @@
                         'citate_id' : citateID,
                         'action': action                        
                     })
-                    .then(response => response.json())
+                })
+                    .then(response => {
+                        console.log('Raw response:', response);
+                        return response.json();
+                    })
                     .then(data => {
                         if (data.status === 'success') {
-                            document.getElementById('current-raiting')
+                            document.getElementById('current-raiting').textContent = data.new_rating;
                         } else {
                             alert('Ошибка: '+ data.message);
                         }
@@ -63,12 +67,12 @@
                     .catch(error=>{
                         console.error('');
                         alert('');
-                    })
-                }
+                    });
             });
         });
 
-        document.getElementById('')
-
+        document.getElementById('update-button')?.addEventListener('click', function(){
+            window.location.reload();
+        })
     </script>
 {% endblock %}

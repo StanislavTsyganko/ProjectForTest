@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.main, name='main'),
     path('citate/',include('citate.urls')),
+    path('update', views.update_rating, name="update_rating"),
 ]
